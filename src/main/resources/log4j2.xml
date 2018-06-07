@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- log4j2 本身日志打印级别，以及重新刷新配置文件的时间-->
+<Configuration status="WARN" monitorInterval="5">
+	<Properties>
+		<Property name="log-path">log</Property>
+		<Property name="log-file-info">app-info.log</Property>
+		<Property name="log-file-warn">app-warn.log</Property>
+		<Property name="log-file-error">app-error.log</Property>
+		<Property name="pattern">%p [%date{yyyy-MM-dd HH:mm:ss,SSS}] [%thread] %m %l %n</Property>
+		<property name="every_file_size">10M</property><!-- 日志切割的最小单位 -->
+	</Properties>
+	<Appenders>
+		<Console name="Console-Appender" target="SYSTEM_OUT">
+			<PatternLayout>
+				<pattern>${pattern}</pattern>
+			</PatternLayout>
+		</Console>
+		<!-- 这个会打印出所有的信息，每次大小超过size，则这size大小的日志会自动存入按年份-月份建立的文件夹下面并进行压缩，作为存档-->
+		<RollingFile name="RollingFile-Appender-INFO" fileName="${log-path}/${log-file-info}" append="true"
+		             filePattern="${log-path}/$${date:yyyy-MM}/app-info-%d{yyyy-MM-dd}-%i.log.gz">
+			<Filters>
+				<ThresholdFilter level="ERROR" onMatch="DENY" onMismatch="NEUTRAL" />
+				<ThresholdFilter level="WARN" onMatch="DENY" onMismatch="NEUTRAL" />
+				<ThresholdFilter level="INFO" onMatch="ACCEPT" onMismatch="DENY" />
+			</Filters>
+			<PatternLayout pattern="${pattern}" />
+			<SizeBasedTriggeringPolicy size="${every_file_size}"/>
+			<!-- DefaultRolloverStrategy属性如不设置，则默认为最多同一文件夹下7个文件，这里设置了20 -->
+			<DefaultRolloverStrategy max="20"/>
+		</RollingFile>
+		<RollingFile name="RollingFile-Appender-WARN" fileName="${log-path}/${log-file-warn}" append="true"
+		             filePattern="${log-path}/$${date:yyyy-MM}/app-warn-%d{yyyy-MM-dd}-%i.log.gz">
+			<Filters>
+				<ThresholdFilter level="ERROR" onMatch="DENY" onMismatch="NEUTRAL" />
+				<ThresholdFilter level="WARN" onMatch="ACCEPT" onMismatch="DENY" />
+			</Filters>
+			<PatternLayout pattern="${pattern}" />
+			<SizeBasedTriggeringPolicy size="${every_file_size}"/>
+			<!-- DefaultRolloverStrategy属性如不设置，则默认为最多同一文件夹下7个文件，这里设置了20 -->
+			<DefaultRolloverStrategy max="20"/>
+		</RollingFile>
+		<RollingFile name="RollingFile-Appender-ERROR" fileName="${log-path}/${log-file-error}" append="true"
+		             filePattern="${log-path}/$${date:yyyy-MM}/app-error-%d{yyyy-MM-dd}-%i.log.gz">
+			<Filters>
+				<ThresholdFilter level="ERROR" onMatch="ACCEPT" onMismatch="DENY" />
+			</Filters>
+			<PatternLayout pattern="${pattern}" />
+			<SizeBasedTriggeringPolicy size="${every_file_size}"/>
+			<!-- DefaultRolloverStrategy属性如不设置，则默认为最多同一文件夹下7个文件，这里设置了20 -->
+			<DefaultRolloverStrategy max="20"/>
+		</RollingFile>
+	</Appenders>
+	<Loggers>
+		<!-- 异步输出 -->
+		<Root level="INFO">
+			<AppenderRef ref="Console-Appender"/>
+			<AppenderRef ref="RollingFile-Appender-INFO" />
+			<AppenderRef ref="RollingFile-Appender-WARN" />
+			<AppenderRef ref="RollingFile-Appender-ERROR" />
+		</Root>
+	</Loggers>
+</Configuration>
