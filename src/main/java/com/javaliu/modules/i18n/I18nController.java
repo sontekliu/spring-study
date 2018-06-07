@@ -34,6 +34,10 @@ public class I18nController {
 /*        Locale sessionLocale = (Locale)request.getSession().getAttribute(SessionLocaleResolver.LOCALE_SESSION_ATTRIBUTE_NAME);
         System.out.println(sessionLocale.getCountry());
         System.out.println(sessionLocale.getDisplayLanguage());*/
+        logger.debug("debugdebugdebugdebugdebugdebugdebugdebugdebugdebug");
+        logger.info("iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii");
+        logger.warn("wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww");
+        logger.error("rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr");
         Locale locale11 = LocaleContextHolder.getLocale();
         Locale locale = RequestContextUtils.getLocale(request);
         String str = messageSource.getMessage("hello", null, locale);
