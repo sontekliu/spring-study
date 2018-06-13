@@ -25,7 +25,7 @@
 		<mysql-driver.version>6.0.6</mysql-driver.version>
 		<!-- 操作数据库相关的jar end -->
 
-		<start-class>com.sicdt.cweb.mobile.MobileWebApplication</start-class>
+		<start-class>com.javaliu.App</start-class>
 	</properties>
 
 	<parent>

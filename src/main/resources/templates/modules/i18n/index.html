@@ -5,7 +5,11 @@
     <title>国际化示例</title>
 </head>
 <body>
-
+<a th:href="@{/i18n/changeSessionLanguage(lang=zh)}">中文</a>
+<a th:href="@{/i18n/changeSessionLanguage(lang=en)}">英文</a>
+<a th:href="@{/i18n/changeSessionLanguage(lang=jp)}">日文</a>
+<p></p>
 <p th:text="#{hello}"> </p>
+<p th:text="${currentDateTime}"> </p>
 </body>
 </html>
