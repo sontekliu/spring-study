@@ -7,7 +7,7 @@
 <body>
 <form method="post" id="tzForm" th:action="@{/timeZone/tzValueHandler}">
     <input id="tzInput" type="hidden" name="timeZoneOffset"><br>
-    <input type="hidden" name="requestedUrl" value="${requestedUrl}">
+    <input type="hidden" name="requestedUrl" th:value="${requestedUrl}">
 </form>
 
 <script>
