@@ -13,7 +13,9 @@ import java.util.Locale;
 public class T {
 
     public static void main(String[] args) {
+        System.out.println(System.currentTimeMillis());
         LocalDate localDate = LocalDate.now();
+
         System.out.println(localDate);
         System.out.println(ZoneId.systemDefault().toString());
         ZoneId zoneId = ZoneId.of("America/New_York");
