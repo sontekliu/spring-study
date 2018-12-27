@@ -30,7 +30,7 @@ public class App extends SpringBootServletInitializer {
         return new SessionLocaleResolver();
     }
 
-    @Bean
+/*    @Bean
     public WebMvcConfigurer configurer () {
         return new WebMvcConfigurerAdapter() {
             @Override
@@ -40,7 +40,7 @@ public class App extends SpringBootServletInitializer {
                 i.excludePathPatterns("/timeZone/tzHandler", "/timeZone/tzValueHandler");
             }
         };
-    }
+    }*/
 
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
