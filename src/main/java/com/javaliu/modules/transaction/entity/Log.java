@@ -3,8 +3,8 @@ package com.javaliu.modules.transaction.entity;
 public class Log {
 
     private int id;
-    private String code;
-    private String name;
+    private String type;
+    private String detail;
 
     public int getId() {
         return id;
@@ -14,19 +14,19 @@ public class Log {
         this.id = id;
     }
 
-    public String getCode() {
-        return code;
+    public String getType() {
+        return type;
     }
 
-    public void setCode(String code) {
-        this.code = code;
+    public void setType(String type) {
+        this.type = type;
     }
 
-    public String getName() {
-        return name;
+    public String getDetail() {
+        return detail;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setDetail(String detail) {
+        this.detail = detail;
     }
 }
