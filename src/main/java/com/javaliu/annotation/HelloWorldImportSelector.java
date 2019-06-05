@@ -20,7 +20,7 @@ public class HelloWorldImportSelector implements ImportSelector {
     public String[] selectImports(AnnotationMetadata importingClassMetadata) {
         Set<String> set = importingClassMetadata.getAnnotationTypes();
         Iterator<String> it = set.iterator();
-        while (it.hasNext()){
+        while (it.hasNext()) {
             System.out.println(it.next());
         }
         return new String[]{HelloWorldConfigure.class.getName()};

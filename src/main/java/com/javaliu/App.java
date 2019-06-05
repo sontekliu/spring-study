@@ -7,10 +7,9 @@ import org.springframework.context.ConfigurableApplicationContext;
 
 /**
  * Hello world!
- *
  */
 @EnableHelloWorld
-public class App{
+public class App {
     public static void main(String[] args) {
         // SpringApplication.run(App.class, args);
         ConfigurableApplicationContext context = new SpringApplicationBuilder()

@@ -30,12 +30,12 @@ import java.util.TimeZone;
 public class TimeZoneController {
 
     @RequestMapping("tzHandler")
-    public String handle () {
+    public String handle() {
         return "modules/i18n/timeZone.html";
     }
 
     @RequestMapping(value = "tzValueHandler", method = RequestMethod.POST)
-    public String handleTzValue (
+    public String handleTzValue(
             Locale locale, HttpServletRequest req,
             HttpServletResponse res,
             @RequestParam("requestedUrl") String requestedUrl,
@@ -59,7 +59,7 @@ public class TimeZoneController {
 
     @RequestMapping("index")
     @ResponseBody
-    public String testHandler (Locale clientLocale, ZoneId clientZoneId) {
+    public String testHandler(Locale clientLocale, ZoneId clientZoneId) {
 
         ZoneOffset serverZoneOffset = ZoneOffset.ofTotalSeconds(
                 TimeZone.getDefault().getRawOffset() / 1000);
@@ -80,6 +80,6 @@ public class TimeZoneController {
         TimeZone timeZone = RequestContextUtils.getTimeZone(request);
         System.out.println(timeZone);
 
-        return "aaa" + timeZone.toZoneId() +"当前时间是："+ LocalDateTime.ofInstant(Instant.now(), timeZone.toZoneId());
+        return "aaa" + timeZone.toZoneId() + "当前时间是：" + LocalDateTime.ofInstant(Instant.now(), timeZone.toZoneId());
     }
 }

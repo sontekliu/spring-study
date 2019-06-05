@@ -20,21 +20,21 @@ public class HightLoadController {
     private static final List<String> list = new ArrayList<>();
 
     @RequestMapping(value = "highCPU")
-    public void highCPU(){
-        while (true){
+    public void highCPU() {
+        while (true) {
             System.out.println("AAAAAAAAAAAAAAAAAAAAAA");
         }
     }
 
     @RequestMapping(value = "highMemory")
-    public void highMemory(HttpServletRequest request, HttpServletResponse response){
-        for (int i=0;i<1000000;i++){
-           String str = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
-           StringBuffer sb = new StringBuffer();
-           for (int j=0;j<1000;j++){
-               sb.append(str.charAt(new Random().nextInt(61)));
-           }
-           list.add(sb.toString());
+    public void highMemory(HttpServletRequest request, HttpServletResponse response) {
+        for (int i = 0; i < 1000000; i++) {
+            String str = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+            StringBuffer sb = new StringBuffer();
+            for (int j = 0; j < 1000; j++) {
+                sb.append(str.charAt(new Random().nextInt(61)));
+            }
+            list.add(sb.toString());
         }
     }
 }

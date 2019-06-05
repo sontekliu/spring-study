@@ -18,14 +18,14 @@ import java.util.TimeZone;
  * <br> 创建：2018年06月13日
  * <br> 版本：V1.0.0
  */
-public class TimeZoneInterceptor implements HandlerInterceptor{
+public class TimeZoneInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         TimeZone timeZone = RequestContextUtils.getTimeZone(request);
         Locale locale = RequestContextUtils.getLocale(request);
         System.out.println("当前本地是：" + locale);
         System.out.println("当前时区是：" + timeZone);
-        if(timeZone == null){
+        if (timeZone == null) {
             System.out.println("Forwarding to js to get timezone offset");
             String uri = request.getRequestURI();
             System.out.println("requestedUrl: " + uri);

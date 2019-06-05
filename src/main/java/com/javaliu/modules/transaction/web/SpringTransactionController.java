@@ -22,7 +22,7 @@ public class SpringTransactionController {
     private IUserService userService;
 
     @RequestMapping(value = "addUser")
-    public String addUser(HttpServletRequest request, HttpServletResponse response, Model model){
+    public String addUser(HttpServletRequest request, HttpServletResponse response, Model model) {
         User user = new User();
         user.setCode("abcde");
         user.setName("张三");

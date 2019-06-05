@@ -12,31 +12,31 @@ public class AcceptHeaderLocaleTzCompositeResolver implements LocaleContextResol
     private LocaleContextResolver localeContextResolver;
     private AcceptHeaderLocaleResolver acceptHeaderLocaleResolver;
 
-    public AcceptHeaderLocaleTzCompositeResolver (LocaleContextResolver localeContextResolver) {
+    public AcceptHeaderLocaleTzCompositeResolver(LocaleContextResolver localeContextResolver) {
         this.localeContextResolver = localeContextResolver;
         acceptHeaderLocaleResolver = new AcceptHeaderLocaleResolver();
         acceptHeaderLocaleResolver.setDefaultLocale(Locale.getDefault());
     }
 
     @Override
-    public LocaleContext resolveLocaleContext (HttpServletRequest request) {
+    public LocaleContext resolveLocaleContext(HttpServletRequest request) {
         return localeContextResolver.resolveLocaleContext(request);
     }
 
     @Override
-    public void setLocaleContext (HttpServletRequest request, HttpServletResponse response,
-                                  LocaleContext localeContext) {
+    public void setLocaleContext(HttpServletRequest request, HttpServletResponse response,
+                                 LocaleContext localeContext) {
         localeContextResolver.setLocaleContext(request, response, localeContext);
 
     }
 
     @Override
-    public Locale resolveLocale (HttpServletRequest request) {
+    public Locale resolveLocale(HttpServletRequest request) {
         return acceptHeaderLocaleResolver.resolveLocale(request);
     }
 
     @Override
-    public void setLocale (HttpServletRequest request, HttpServletResponse response, Locale locale) {
+    public void setLocale(HttpServletRequest request, HttpServletResponse response, Locale locale) {
         acceptHeaderLocaleResolver.setLocale(request, response, locale);
 
     }

@@ -35,7 +35,7 @@ public class I18nController {
     private MessageSource messageSource;
 
     @RequestMapping(value = "index")
-    public String index(HttpServletRequest request){
+    public String index(HttpServletRequest request) {
         Locale requestLocale = request.getLocale();
 /*        Locale sessionLocale = (Locale)request.getSession().getAttribute(SessionLocaleResolver.LOCALE_SESSION_ATTRIBUTE_NAME);
         System.out.println(sessionLocale.getCountry());
@@ -52,19 +52,19 @@ public class I18nController {
     }
 
     @RequestMapping(value = "changeSessionLanguage")
-    public String changeSessionLanguage(HttpServletRequest request){
+    public String changeSessionLanguage(HttpServletRequest request) {
         String lang = request.getParameter("lang");
         Locale locale = RequestContextUtils.getLocale(request);
         TimeZone timeZone = RequestContextUtils.getTimeZone(request);
         System.out.println(timeZone);
         System.out.println(locale);
-        if("zh".equals(lang)){
+        if ("zh".equals(lang)) {
             request.getSession().setAttribute(SessionLocaleResolver.LOCALE_SESSION_ATTRIBUTE_NAME,
                     Locale.CHINA);
-        }else if("en".equals(lang)){
+        } else if ("en".equals(lang)) {
             request.getSession().setAttribute(SessionLocaleResolver.LOCALE_SESSION_ATTRIBUTE_NAME,
                     new Locale("en", "US"));
-        }else if("jp".equals(lang)){
+        } else if ("jp".equals(lang)) {
             request.getSession().setAttribute(SessionLocaleResolver.LOCALE_SESSION_ATTRIBUTE_NAME,
                     Locale.JAPAN);
         }
@@ -78,7 +78,7 @@ public class I18nController {
     }
 
     @RequestMapping(value = "showTimeZone")
-    public String showTimeZone(TimeZone timeZone, ZoneId zoneId){
+    public String showTimeZone(TimeZone timeZone, ZoneId zoneId) {
         System.out.println(timeZone);
         System.out.println(zoneId);
         return "modules/i18n/index";

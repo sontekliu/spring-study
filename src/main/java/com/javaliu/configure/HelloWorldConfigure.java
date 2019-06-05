@@ -14,7 +14,7 @@ public class HelloWorldConfigure {
 
 
     @Bean
-    public String helloWorld(){
+    public String helloWorld() {
         return "Hello World 2019";
     }
 
