@@ -21,7 +21,7 @@
 		<skipTests>true</skipTests>
 
 		<!-- 操作数据库相关的jar start -->
-		<springboot-druid.version>1.1.2</springboot-druid.version>
+		<springboot-druid.version>1.1.10</springboot-druid.version>
 		<springboot-mybatis.version>1.3.0</springboot-mybatis.version>
 		<mysql-driver.version>6.0.6</mysql-driver.version>
 		<!-- 操作数据库相关的jar end -->
@@ -40,14 +40,24 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-starter-tomcat</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		<!-- 使用aop模板启动器 -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-aop</artifactId>
 		</dependency>
-		<!-- 关闭默认日志 -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-jdbc</artifactId>
+		</dependency>
 
+		<!-- 关闭默认日志 -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter</artifactId>
@@ -97,7 +107,7 @@
             <artifactId>spring-boot-starter-tomcat</artifactId>
             <scope>provided</scope>
         </dependency>
-<!--		<dependency>
+		<dependency>
 			<groupId>com.alibaba</groupId>
 			<artifactId>druid-spring-boot-starter</artifactId>
 			<version>${springboot-druid.version}</version>
@@ -111,7 +121,7 @@
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 			<version>${mysql-driver.version}</version>
-		</dependency>-->
+		</dependency>
 	</dependencies>
 
 	<profiles>
@@ -138,6 +148,15 @@
 	<build>
 		<finalName>${project.artifactId}</finalName>
 		<defaultGoal>package</defaultGoal>
+        <resources>
+            <resource>
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>**/*.xml</include>
+                </includes>
+                <filtering>false</filtering>
+            </resource>
+        </resources>
 <!--		<resources>
 			<resource>
 				<directory>src/main/resources</directory>
@@ -178,10 +197,10 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
-                <version>2.1.1.RELEASE</version>
+<!--                <version>2.1.1.RELEASE</version>
 				<configuration>
 					<fork>true</fork>
-				</configuration>
+				</configuration>-->
 			</plugin>
 		</plugins>
 	</build>

@@ -1,0 +1,11 @@
+create table sys_user(
+  id INTEGER AUTO_INCREMENT PRIMARY KEY,
+  code VARCHAR(32) NOT NULL COMMENT '用户编码',
+  name VARCHAR(64) NOT NULL COMMENT '用户昵称'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='用户信息表';
+
+create table sys_log(
+  id INTEGER AUTO_INCREMENT PRIMARY KEY,
+  type VARCHAR(32) NOT NULL COMMENT '操作类型，1:添加,2:修改,3:删除',
+  detail VARCHAR(64) NOT NULL COMMENT '具体操作详情'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='日志表';
